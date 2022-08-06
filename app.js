@@ -29,7 +29,7 @@ app.use(session({
   secret:'schloymann',
   cookie: {maxAge: null},
   resave: false,
-  saveUnitialized: true,
+  saveUninitialized: true,
 }));
 
 secured = async(req, res, next) =>{
@@ -46,8 +46,7 @@ secured = async(req, res, next) =>{
 };
 
 app.use('/admin/login', loginRouter);
-// app.use('admin/novedades', secured, adminRouter);
-app.use('/admin/novedades', adminRouter);
+app.use('/admin/novedades', secured, adminRouter);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
